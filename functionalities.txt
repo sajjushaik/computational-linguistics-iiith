@@ -1,0 +1,8 @@
+Functionalities needed to complete the function
+
+In all pages, Navbar should appear where the active pages should be
+while navigate to experiment page the page should appear with dropdown menu
+select language from dropdown menu
+on selecting a language , correspoding jumbled sentence should appear
+on clicking each word the the world should be disabled
+on clicing, show answer button ,correct answer is to be shown.
