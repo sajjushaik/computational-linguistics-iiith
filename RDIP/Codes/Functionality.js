@@ -111,3 +111,19 @@ function Function1() {
   var y = hindi.join("");
   document.getElementById("output7").innerHTML = y;
 }
+function dropdown() {
+  var x = document.getElementById("mySelect").value;
+  if (x == "English") {
+    document.getElementById("info").innerHTML =
+      "Form a sentence (Declarative or Interrogative or any other type) from the given words<br />(select the buttons in proper order)";
+
+    document.getElementById("engbutttons").style.display = "block";
+    document.getElementById("hindibutttons").style.display = "none";
+  } else {
+    document.getElementById("info1").innerHTML =
+      "Form a sentence (Declarative or Interrogative or any other type) from the given words<br />(select the buttons in proper order)";
+
+    document.getElementById("hindibutttons").style.display = "block";
+    document.getElementById("engbutttons").style.display = "none";
+  }
+}

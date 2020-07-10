@@ -7,23 +7,35 @@
     <center>
       <h1>Experiment</h1>
       <br /><br /><br /><br />
-      <select style="width: 160px; height: 25px;"
-        ><option value="select">---Select Language--</option>
-        <option value="English">English</option>
-        <option value="Hindi">Hindi</option>
+      <select id="mySelect" onchange="dropdown()">
+        <option>---- Select language ----</option>
+        <option value="English">English</option
+        ><option value="Hindi">hindi</option>
       </select>
       <br /><br /><br />
-      <h3 style="color: blue;">
-        Form a sentence (Declarative or Interrogative or any other type) from
-        the given words<br />
-        (select the buttons in proper order)
-      </h3>
-      <button>did</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button>market</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button>go</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button>he</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button>to</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br />
-      <button onclick="Function1()">ANSWER</button>
+      <div id="engbutttons" style="display: none;">
+        <h3 id="info" style="color: blue;"></h3>
+        <button>did</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>market</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>go</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>he</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>to</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br />
+
+        <button onclick="Function1()">ANSWER</button>
+      </div>
+
+      <div id="hindibutttons" style="display: none;">
+        <h3 id="info1" style="color: blue;"></h3>
+        <button>
+          है</button
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>किताब</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>लाल</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>वहाँ</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>एक</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /><br />
+
+        <button onclick="Function1()">ANSWER</button>
+      </div>
     </center>
 
     <p id="output"></p>
