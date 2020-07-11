@@ -1,49 +1,43 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <script src="Functionality.js"></script>
-  </head>
-  <body>
-    <center>
-      <h1>Experiment</h1>
-      <br /><br /><br /><br />
-      <select id="mySelect" onchange="dropdown()">
-        <option>---- Select language ----</option>
-        <option value="English">English</option
-        ><option value="Hindi">hindi</option>
-      </select>
-      <br /><br /><br />
-      <div id="engbutttons" style="display: none;">
-        <h3 id="info" style="color: blue;"></h3>
+    <head lang="en">
+        <meta charset="utf-8">
 
-        <button onclick="Function1()">ANSWER</button>
-      </div>
+        <title>Virtual Labs</title>
 
-      <div id="hindibutttons" style="display: none;">
-        <h3 id="info1" style="color: blue;">asa</h3>
 
-        <button onclick="Function1()">ANSWER</button>
-      </div>
-      <br />
-      <h3 id="b1" style="color: #0000a0; margin-bottom: 1px;"></h3>
-      <span id="output" style="color: blue;"></span>
-      <h3 id="b2""></h3>
+        <link rel="stylesheet" href="style.css">
 
-      <p id="output1"></p>
-      <p id="output2"></p>
-      <p id="output3"></p>
-      <p id="output4"></p>
-      <p id="output5"></p>
-      <p id="output6"></p>
-      <p id="output7"></p>
-      <p id="output8"></p>
-      <p id="output9"></p>
-      <p id="output10"></p>
-      <p id="output11"></p>
-      <p id="output12"></p>
-      <p id="output13"></p>
-      <p id="output14"></p>
-      <p id="output15"></p>
-    </center>
-  </body>
+        <script src="Functionality.js"></script>
+    </head>
+    <body>
+        
+
+            <div class="display-sections">
+
+                <div class="section-experiment">
+                    <div class="head1">
+                       <center> Experiment</div></center>
+                    </div>
+                    <div class="data" style="text-align: center;">
+                        <select id="language" onchange="exp_top()">
+                            <option value="null">---Select Language---</option>
+                            <option value="english">English</option>
+                            <option value="hindi">Hindi</option>
+                        </select>
+                    </div>
+                    <br><br>
+                    <div class="experiment-area">
+                        <p id="experiment-top"></p>
+                        <p><i id="experiment-line"></i></p>
+                        <p id="experiment-sentence" onclick="second_message();a(event.target.id)"></p><br><br>
+                        <p id="second-msg"></p><i id="second-line"></i>
+                        <p id="formed-sentence"></p>
+                        <button id="reform-button" style="display: none;" onclick="reform()">Re-form the sentence</button>
+                    </div>
+                </div>
+
+            </div>
+
+    </body>
 </html>
