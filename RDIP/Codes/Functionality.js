@@ -1,249 +1,122 @@
-/* Corpus of Sentences:
-English :10
-Hindi : */
-
-var sentence = '{"English":['+
-    '{"a":"John ate an apple before afternoon", "b":"before afternoon John ate an apple", "c":"John before afternoon ate an apple"},' +
-    '{"a":"some students like to study in the night", "b":"in the night some students like to study"},' +
-    '{"a":"John and Mary went to church", "b":"Mary and John went to church"},'+
-    '{"a":"John went to church after eating", "b":"after eating John went to church","c":"John after eating went to church"},' +
-    '{"a":"did he go to market", "b":"he did go to market"},' +
-    '{"a":"the woman who called my sister sells cosmetics", "b":"the woman who sells cosmetics called my sister",'+
-        '"c":"my sister who sells cosmetics called the woman", "d":"my sister who called the woman sells cosmetics"},'+
-    '{"a":"John goes to the library and studies", "b":"John studies and goes to the library"},'+
-    '{"a":"John ate an apple so did she", "b":"she ate an apple so did John"},'+
-    '{"a":"the teacher returned the book after she noticed the error", "b":"the teacher noticed the error after she returned the book",'+
-        '"c":"after the teacher returned the book she noticed the error", "d":"after the teacher noticed the error she returned the book",'+
-        '"e":"she returned the book after the teacher noticed the error", "f":"she noticed the error after the teacher returned the book",'+
-        '"g":"after she returned the book the teacher noticed the error", "h":"after she noticed the error the teacher returned the book"},'+
-    '{"a":"I told her that I bought a book yesterday", "b":"I told her yesterday that I bought a book", "c":"yesterday I told her that I bought a book",'+
-        '"d":"I bought a book that I told her yesterday", "e":"I bought a book yesterday that I told her", "f":"yesterday I bought a book that I told her"}],'+
-    
-    '"Hindi":[' +
-    '{"a":"राम और श्याम बाजार गयें", "b":"राम और श्याम गयें बाजार", "c":"बाजार गयें राम और श्याम", "d":"गयें बाजार राम और श्याम"},'+
-    '{"a":"राम सोया और श्याम भी", "b":"श्याम सोया और राम भी", "c":"सोया श्याम और राम भी", "d":"सोया राम और श्याम भी"},'+
-    '{"a":"मैंने उसे बताया कि राम सो रहा है", "b":"मैंने उसे बताया कि सो रहा है राम", "c":"उसे मैंने बताया कि राम सो रहा है", "d":"उसे मैंने बताया कि सो रहा है राम",'+
-        '"e":"मैंने बताया उसे कि राम सो रहा है", "f":"मैंने बताया उसे कि सो रहा है राम", "g":"उसे बताया मैंने कि राम सो रहा है", "h":"उसे बताया मैंने कि सो रहा है राम",'+
-        '"i":"बताया मैंने उसे कि राम सो रहा है", "j":"बताया मैंने उसे कि सो रहा है राम", "k":"बताया उसे मैंने कि राम सो रहा है", "l":"बताया उसे मैंने कि सो रहा है राम"},'+
-    '{"a":"राम खाकर सोया", "b":"खाकर राम सोया", "c":"राम सोया खाकर", "d":"खाकर सोया राम", "e":"सोया राम खाकर", "f":"सोया खाकर राम"},'+
-    '{"a":"बिल्लियों को मारकर कुत्ता सो गया", "b":"मारकर बिल्लियों को कुत्ता सो गया", "c":"बिल्लियों को मारकर सो गया कुत्ता", "d":"मारकर बिल्लियों को सो गया कुत्ता",'+
-        '"e":"कुत्ता सो गया बिल्लियों को मारकर", "f":"कुत्ता सो गया मारकर बिल्लियों को", "g":"सो गया कुत्ता बिल्लियों को मारकर", "h":"सो गया कुत्ता मारकर बिल्लियों को"},'+
-    '{"a":"एक लाल किताब वहाँ है", "b":"एक लाल किताब है वहाँ", "c":"वहाँ है एक लाल किताब", "d":"है वहाँ एक लाल किताब"},'+
-    '{"a":"एक बड़ी सी किताब वहाँ है", "b":"एक बड़ी सी किताब है वहाँ", "c":"बड़ी सी एक किताब वहाँ है", "d":"बड़ी सी एक किताब है वहाँ", "e":"वहाँ है एक बड़ी सी किताब",'+
-        '"f":"वहाँ है बड़ी सी एक किताब", "g":"है वहाँ एक बड़ी सी किताब", "h":"है वहाँ बड़ी सी एक किताब"}]}';   
-
-/*
-obj = JSON.parse(text);
-document.getElementById("demo").innerHTML =
-obj.English[0].a + " " + obj.Hindi[0].a;
-*/
-
-
-/* Global Variables */
-var language="";
-var current_sentence = "";
-var formed_sentence = "";
-var word_array ;
-var word_count = 0;
-var question = 0;
-var sentences = JSON.parse(sentence);
-
-
-/* Displaying the first message */
-function exp_top(){
-    clear();
-    language = document.getElementById('language').options[document.getElementById('language').selectedIndex].text;
-    if(language == "---Select Language---"){
-        alert('Select a Language');
-        set_display("none");
-        return false;
-    }
-    else if(language == "English" || language == "Hindi"){
-        set_display("initial");
-        document.getElementById("experiment-top").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
-        document.getElementById("experiment-line").innerHTML = "(select the buttons in proper order)";
-        sentence_selection(language);
-    }
+body{
+    font-family: "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Verdana,Arial,sans-serif;;
 }
 
-/* Selection of a random sentence */
-function sentence_selection(language){
-    document.getElementById('experiment-sentence').innerHTML = "";
-    if(language == "English"){
-        question = Math.floor(Math.random() * 10);                        // Randomly selecting an english sentence.
-        current_sentence = sentences.English[question].a;
-        sentence_to_buttons( sentences.English[question].a );
-    }
-    else if(language == "Hindi"){
-        question = Math.floor(Math.random() * 7);                         // Randomly selecting an hindi sentence.
-        current_sentence = sentences.Hindi[question].a;
-        sentence_to_buttons( sentences.Hindi[question].a );
-    }
+.container{
+    margin:auto;
+    padding: 0px;
+    width: 1024px;
+    text-align: center;
 }
 
-/* Shuffling the words in the sentence */
-function sentence_to_buttons( str ){
-    var arr = str.split(" ");
-    word_array = shuffle(arr);
-    adding_buttons(word_array);
+.display-sections{
+    width: 100%;
+    min-height: 750px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 auto;
+    background: url(../../src/themes/blue-icon/images/content_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: left;
 }
 
-/*Converting the shuffled words into sentences */
-function adding_buttons(arr){
-    var j = "1";
-    for(i=0;i<arr.length;i++){
-        var button = document.createElement("button");
-        button.setAttribute("id",j);
-        button.setAttribute("value",arr[i]);
-        j += String(parseFloat(j) + 1);
-        button.innerHTML = arr[i];
-        document.getElementById('experiment-sentence').appendChild(button);
-    }
-    document.getElementById('formed-sentence').value = String();
-    word_count = 0;
+.section-experiment{
+    margin-left: 45px;
+    margin-right: 45px;
 }
 
-/* Shuffling words */
-function shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
+.head1{
+    color: #222222;
+    font-weight: 800;
+    font-size: 30px;
+    padding-bottom: 10px;
 }
 
-/* Displaying second message */
-function second_message(id1){
-    if(id1 == "experiment-sentence")
-        return ;
-    document.getElementById('second-msg').innerHTML = "Formed Sentence ";
-    document.getElementById('second-line').innerHTML = "(after selecting words):";
-    document.getElementById("reform-button").style.display = "initial";
+.head2{
+    color:#222222;
+    text-decoration: underline;
+    font-weight: 600;
+    padding-top:10px;
+    font-size: 18px;
 }
 
-/* Displaying the formed sentence */
-function a(id1){
-    if(id1 == "experiment-sentence")
-        return ;
-    if(word_count == 0){
-        document.getElementById('formed-sentence').innerHTML = String( document.getElementById(id1).value );
-    }
-    else{
-        document.getElementById('formed-sentence').innerHTML = String( document.getElementById('formed-sentence').innerHTML ) + " " + String( document.getElementById(id1).value );
-    }
-    formed_sentence = document.getElementById('formed-sentence').innerHTML;
-    document.getElementById(id1).style.display = "none";
-
-    word_count += 1;
-
-    if(word_count == word_array.length){
-        document.getElementById("check-correctness").style.display = "initial";
-    }
+.data{
+    font-size: 16px;
+    color: #444444;
+    padding:10px;
 }
 
-/* Re-form button functionality */
-function reform(){
-    clear();
-    document.getElementById('experiment-sentence').innerHTML = "";
-    adding_buttons(word_array);                                             // Jumbling back words to the previous order.
+.experiment-area{
+    text-align: center;
 }
 
-/* Validating the formed sentence */ 
-function check_sentence(){
-    var status = false;
-    if(language == "English"){
-        for(sent in sentences.English[question]){
-            if(sentences.English[question][sent] == formed_sentence){
-                status = true;
-                break;
-            }
-        }
-
-        if(status == true){
-            document.getElementById('right-answer').style.display = "initial";
-        }
-        else{
-            document.getElementById('wrong-answer').style.display = "initial";
-            document.getElementById('correct-sentence').style.display = "initial";         // Invoked when 'check the correctness of the sentence is clicked.
-        }
-        return;
-    }
-    else if(language == "Hindi"){
-        for(sent in sentences.Hindi[question]){
-            if(sentences.Hindi[question][sent] == formed_sentence){
-                status = true;
-                break;
-            }
-        }
-
-        if(status == true){
-            document.getElementById('right-answer').style.display = "initial";
-        }
-        else{
-            document.getElementById('wrong-answer').style.display = "initial";
-            document.getElementById('correct-sentence').style.display = "initial";          // Invoked when 'check the correctness of the sentence is clicked.
-        }
-        return true;
-    }
-    
-    
+hr{
+    margin-top:30px;
+    margin-bottom: 30px;
+    height:1px;
+    border-width:0;
+    color:gray;
+    background-color:gray
 }
 
-/*Displaying correct sentences */
-function get_sentences(){
-    document.getElementById('correct-sentences').style.display = "initial";
-
-    var name = document.getElementById('correct-sentence').innerHTML;
-
-    if(name == "Get the correct sentence" || name == "Get answers"){                            //Changing the name of the button accordingly.
-        document.getElementById('correct-sentence').innerHTML = "Hide the correct sentence";
-
-        if(language == "English"){
-            for(sent in sentences.English[question]){
-                var t = document.createTextNode(sentences.English[question][sent]);
-                document.getElementById('correct-sentences').appendChild(t);
-                var line = document.createElement("br");
-                document.getElementById('correct-sentences').appendChild(line);
-            }
-            return;
-        }
-        else if(language == "Hindi"){
-            for(sent in sentences.Hindi[question]){
-                var t = document.createTextNode(sentences.Hindi[question][sent]);
-                document.getElementById('correct-sentences').appendChild(t);
-                var line = document.createElement("br");
-                document.getElementById('correct-sentences').appendChild(line);
-            }
-            return;
-        }
-    }
-    else if(name == "Hide the correct sentence"){
-        document.getElementById('correct-sentence').innerHTML = "Get answers";
-        document.getElementById('correct-sentences').innerHTML = "";
-    }
+select{
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+    text-align: left;
+    zoom:120%;
+    color:#444444;
 }
 
-function clear(){
-    document.getElementById("second-msg").innerHTML = "";
-    document.getElementById("second-line").innerHTML = "";
-    document.getElementById('formed-sentence').innerHTML = "";
-    document.getElementById("reform-button").style.display = "none";
-    document.getElementById("check-correctness").style.display = "none";
-    document.getElementById('right-answer').style.display = "none";
-    document.getElementById('wrong-answer').style.display = "none";
-    document.getElementById('correct-sentence').style.display = "none";
-    document.getElementById('correct-sentences').style.display = "none";
-    document.getElementById('correct-sentence').innerHTML = "Get the correct sentence";
-    document.getElementById('correct-sentences').innerHTML = "";
+#experiment-area{
+    margin-top:100px;
 }
 
-function set_display(val){
-    document.getElementById("experiment-top").style.display = val;
-    document.getElementById("experiment-line").style.display = val;
-    document.getElementById("experiment-sentence").style.display = val;
-    document.getElementById("second-msg").style.display = val;
-    document.getElementById("second-line").style.display = val;
+#experiment-top, #second-msg{
+    color: #0000AA;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+#experiment-line, #second-line{
+    color: #0000FF;
+    font-size: 14px;
+}
+
+#experiment-sentence button{
+    padding:5px;
+}
+
+#experiment-sentence button, #reform-button,
+#check-correctness, #correct-sentence{
+    cursor: pointer;
+    margin:10px;
+    padding :5px;
+    border :1px #222222 solid;
+}
+
+#formed-sentence{
+    font-size: 30px;
+    color: #444444;
+}
+
+#right-answer{
+    font-size: 30px;
+    color: #008000;
+}
+
+#wrong-answer{
+    font-size: 30px;
+    color: #FF0000;
+}
+
+#experiment-sentence button:hover{
+    transform:scale(1.3,1.3);
+    background-color: #b8b9b9;
 }
