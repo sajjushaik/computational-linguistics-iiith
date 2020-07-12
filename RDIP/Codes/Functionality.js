@@ -92,7 +92,7 @@ function adding_buttons(arr){
         button.innerHTML = arr[i];
         document.getElementById('experiment-sentence').appendChild(button);
     }
-    document.getElementById('formed-sentence').value = "";
+    document.getElementById('formed-sentence').value = String();
     word_count = 0;
 }
 
@@ -107,7 +107,9 @@ function shuffle(a) {
     return a;
 }
 
-function second_message(){
+function second_message(id1){
+    if(id1 == "experiment-sentence")
+        return ;
     document.getElementById('second-msg').innerHTML = "Formed Sentence ";
     document.getElementById('second-line').innerHTML = "(after selecting words):";
     document.getElementById("reform-button").style.display = "initial";
@@ -115,8 +117,13 @@ function second_message(){
 
 function a(id1){
     if(id1 == "experiment-sentence")
-        return;
-    document.getElementById('formed-sentence').innerHTML = String( document.getElementById('formed-sentence').innerHTML ) + " " + String( document.getElementById(id1).value );
+        return ;
+    if(word_count == 0){
+        document.getElementById('formed-sentence').innerHTML = String( document.getElementById(id1).value );
+    }
+    else{
+        document.getElementById('formed-sentence').innerHTML = String( document.getElementById('formed-sentence').innerHTML ) + " " + String( document.getElementById(id1).value );
+    }
     formed_sentence = document.getElementById('formed-sentence').innerHTML;
     document.getElementById(id1).style.display = "none";
 
@@ -133,15 +140,52 @@ function reform(){
     adding_buttons(word_array);
 }
 
+function check_sentence(){
+    var status = false;
+    if(language == "English"){
+        for(sent in sentences.English[question]){
+            if(sentences.English[question][sent] == formed_sentence){
+                status = true;
+                break;
+            }
+        }
+
+        if(status == true){
+            document.getElementById('right-answer').style.display = "initial";
+        }
+        else{
+            document.getElementById('wrong-answer').style.display = "initial";
+        }
+        return;
+    }
+    else if(language == "Hindi"){
+        for(sent in sentences.Hindi[question]){
+            if(sentences.Hindi[question][sent] == formed_sentence){
+                status = true;
+                break;
+            }
+        }
+
+        if(status == true){
+            document.getElementById('right-answer').style.display = "initial";
+        }
+        else{
+            document.getElementById('wrong-answer').style.display = "initial";
+        }
+        return true;
+    }
+    
+    
+}
+
 function clear(){
-    language = "";
-    current_sentence = "";
-    formed_sentence = "";
     document.getElementById("second-msg").innerHTML = "";
     document.getElementById("second-line").innerHTML = "";
     document.getElementById('formed-sentence').innerHTML = "";
     document.getElementById("reform-button").style.display = "none";
     document.getElementById("check-correctness").style.display = "none";
+    document.getElementById('right-answer').style.display = "none";
+    document.getElementById('wrong-answer').style.display = "none";
 }
 
 function set_display(val){

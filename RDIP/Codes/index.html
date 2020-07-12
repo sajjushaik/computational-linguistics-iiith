@@ -31,11 +31,13 @@
                     <div class="experiment-area">
                         <p id="experiment-top"></p>
                         <p><i id="experiment-line"></i></p>
-                        <p id="experiment-sentence" onclick="second_message();a(event.target.id)"></p><br><br>
+                        <p id="experiment-sentence" onclick="second_message(event.target.id);a(event.target.id)"></p><br><br>
                         <p id="second-msg"></p><i id="second-line"></i>
                         <p id="formed-sentence"></p>
                         <button id="reform-button" style="display: none;" onclick="reform()">Re-form the sentence</button><br>
-                        <button id="check-correctness" style="display: none;">Check the correctness of this sentence</button>
+                        <button id="check-correctness" style="display: none;" onclick="check_sentence()">Check the correctness of this sentence</button><br>
+                        <p id="right-answer" style="display: none;">Right answer!!!</p>
+                        <p id="wrong-answer" style="display: none;">Wrong answer!!!</p>
                     </div>
                 </div>
 

@@ -103,3 +103,13 @@ select{
     font-size: 30px;
     color: #444444;
 }
+
+#right-answer{
+    font-size: 30px;
+    color: #008000;
+}
+
+#wrong-answer{
+    font-size: 30px;
+    color: #FF0000;
+}
