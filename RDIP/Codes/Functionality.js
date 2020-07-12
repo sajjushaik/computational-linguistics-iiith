@@ -180,6 +180,39 @@ function check_sentence(){
     
 }
 
+function get_sentences(){
+    document.getElementById('correct-sentences').style.display = "initial";
+
+    var name = document.getElementById('correct-sentence').innerHTML;
+
+    if(name == "Get the correct sentence" || name == "Get answers"){
+        document.getElementById('correct-sentence').innerHTML = "Hide the correct sentence";
+
+        if(language == "English"){
+            for(sent in sentences.English[question]){
+                var t = document.createTextNode(sentences.English[question][sent]);
+                document.getElementById('correct-sentences').appendChild(t);
+                var line = document.createElement("br");
+                document.getElementById('correct-sentences').appendChild(line);
+            }
+            return;
+        }
+        else if(language == "Hindi"){
+            for(sent in sentences.Hindi[question]){
+                var t = document.createTextNode(sentences.Hindi[question][sent]);
+                document.getElementById('correct-sentences').appendChild(t);
+                var line = document.createElement("br");
+                document.getElementById('correct-sentences').appendChild(line);
+            }
+            return;
+        }
+    }
+    else if(name == "Hide the correct sentence"){
+        document.getElementById('correct-sentence').innerHTML = "Get answers";
+        document.getElementById('correct-sentences').innerHTML = "";
+    }
+}
+
 function clear(){
     document.getElementById("second-msg").innerHTML = "";
     document.getElementById("second-line").innerHTML = "";
@@ -189,6 +222,9 @@ function clear(){
     document.getElementById('right-answer').style.display = "none";
     document.getElementById('wrong-answer').style.display = "none";
     document.getElementById('correct-sentence').style.display = "none";
+    document.getElementById('correct-sentences').style.display = "none";
+    document.getElementById('correct-sentence').innerHTML = "Get the correct sentence";
+    document.getElementById('correct-sentences').innerHTML = "";
 }
 
 function set_display(val){
