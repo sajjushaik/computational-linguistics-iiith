@@ -42,6 +42,7 @@ var language="";
 var current_sentence = "";
 var formed_sentence = "";
 var word_array ;
+var word_count = 0;
 var question = 0;
 var sentences = JSON.parse(sentence);
 
@@ -92,6 +93,7 @@ function adding_buttons(arr){
         document.getElementById('experiment-sentence').appendChild(button);
     }
     document.getElementById('formed-sentence').value = "";
+    word_count = 0;
 }
 
 function shuffle(a) {
@@ -117,6 +119,12 @@ function a(id1){
     document.getElementById('formed-sentence').innerHTML = String( document.getElementById('formed-sentence').innerHTML ) + " " + String( document.getElementById(id1).value );
     formed_sentence = document.getElementById('formed-sentence').innerHTML;
     document.getElementById(id1).style.display = "none";
+
+    word_count += 1;
+
+    if(word_count == word_array.length){
+        document.getElementById("check-correctness").style.display = "initial";
+    }
 }
 
 function reform(){
@@ -133,6 +141,7 @@ function clear(){
     document.getElementById("second-line").innerHTML = "";
     document.getElementById('formed-sentence').innerHTML = "";
     document.getElementById("reform-button").style.display = "none";
+    document.getElementById("check-correctness").style.display = "none";
 }
 
 function set_display(val){
