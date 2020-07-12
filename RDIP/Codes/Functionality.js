@@ -155,6 +155,7 @@ function check_sentence(){
         }
         else{
             document.getElementById('wrong-answer').style.display = "initial";
+            document.getElementById('correct-sentence').style.display = "initial";
         }
         return;
     }
@@ -171,6 +172,7 @@ function check_sentence(){
         }
         else{
             document.getElementById('wrong-answer').style.display = "initial";
+            document.getElementById('correct-sentence').style.display = "initial";
         }
         return true;
     }
@@ -186,6 +188,7 @@ function clear(){
     document.getElementById("check-correctness").style.display = "none";
     document.getElementById('right-answer').style.display = "none";
     document.getElementById('wrong-answer').style.display = "none";
+    document.getElementById('correct-sentence').style.display = "none";
 }
 
 function set_display(val){

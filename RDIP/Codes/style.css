@@ -94,7 +94,7 @@ select{
 }
 
 #experiment-sentence button, #reform-button,
-#check-correctness{
+#check-correctness, #correct-sentence{
     cursor: pointer;
     margin:10px;
 }
