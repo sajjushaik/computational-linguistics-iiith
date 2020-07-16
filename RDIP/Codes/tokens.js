@@ -158,7 +158,18 @@ function create_stemmed_corpus(){
         
         no_of_stemmed_types = stemmed_corpus.length;        
 
-        // 78 64 91.
+}
+
+function check_stemmed_types(){
+
+        if(document.getElementById('new-types-box').value == no_of_stemmed_types){
+                document.getElementById('new-types-box').style.backgroundColor = "#008000";
+        }
+        else{
+                document.getElementById('new-types-box').style.backgroundColor = "#FF0000";
+        }
+
+        document.getElementById('new-types-box').style.color = "#FFFFFF";
 
 }
 
@@ -166,10 +177,13 @@ function set(){
 
         document.getElementById('token').value = "";
         document.getElementById('type').value = "";
+        document.getElementById('new-types-box').value = "";
         document.getElementById('type').style.backgroundColor = "#FFFFFF";
         document.getElementById('token').style.backgroundColor = "#FFFFFF";
+        document.getElementById('new-types-box').style.backgroundColor = "#FFFFFF";
         document.getElementById('token').style.color = "#444444";
         document.getElementById('type').style.color = "#444444";
+        document.getElementById('new-types-box').style.color = "#444444";
         document.getElementById('submit').style.display = "flex";
         document.getElementById('right-answer').style.display = "none";
         document.getElementById('wrong-answer').style.display = "none";
@@ -188,6 +202,7 @@ function clear(){
         document.getElementById("experiment-table").style.display = "none";
         document.getElementById('type').style.backgroundColor = "#FFFFFF";
         document.getElementById('token').style.backgroundColor = "#FFFFFF";
+        document.getElementById('new-types-box').style.backgroundColor = "#FFFFFF";
         document.getElementById('right-answer').style.display = "none";
         document.getElementById('wrong-answer').style.display = "none";
         document.getElementById('continue').style.display = "none";
