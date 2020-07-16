@@ -71,7 +71,8 @@ select{
     padding-top: 5px;
 }
 
-#experiment-table, #answer-status{
+#experiment-table, #answer-status,
+#continue-functionality{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -87,7 +88,8 @@ table,tr,td{
     padding:10px;
 }
 
-input[type=submit], #continue{
+input[type=submit], #continue,
+#new-types-box, #continue-submit{
     margin:0 auto;
     display:flex;
     justify-content: center;
@@ -97,15 +99,22 @@ input[type=submit], #continue{
     text-align: center;
 }
 
-input[type=text]{
+input[type=text], #new-types-box{
     color : #444444;
     height:20px;
+    text-align: center;
 }
 
 #right-answer{
     font-size: 20px;
     color: #008000;
     margin:5px;
+}
+
+
+#new-types-box{
+    height:15px;
+    width: 60px;
 }
 
 #wrong-answer{

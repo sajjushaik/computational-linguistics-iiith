@@ -113,6 +113,20 @@ function check_tokens_and_types(){
 
 }
 
+function types_stemming(){
+
+        document.getElementById('stemming-sentence').style.display = "initial";
+        document.getElementById('stemming-sentence').innerHTML = "Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.";
+        document.getElementById('right-answer').style.display = "none";
+        document.getElementById('wrong-answer').style.display = "none";
+        document.getElementById('continue').style.display = "none";
+        document.getElementById('submit').style.display = "none";
+        document.getElementById('new-types').innerHTML = "#new types:";
+        document.getElementById('new-types-box').style.display = "initial";
+        document.getElementById('continue-submit').style.display = "initial";
+
+}
+
 function set(){
 
         document.getElementById('token').value = "";
@@ -121,9 +135,14 @@ function set(){
         document.getElementById('token').style.backgroundColor = "#FFFFFF";
         document.getElementById('token').style.color = "#444444";
         document.getElementById('type').style.color = "#444444";
+        document.getElementById('submit').style.display = "flex";
         document.getElementById('right-answer').style.display = "none";
         document.getElementById('wrong-answer').style.display = "none";
         document.getElementById('continue').style.display = "none";
+        document.getElementById('stemming-sentence').style.display = "none";
+        document.getElementById('new-types').innerHTML = "";
+        document.getElementById('new-types-box').style.display = "none";
+        document.getElementById('continue-submit').style.display = "none";
 
 }
 
@@ -137,5 +156,9 @@ function clear(){
         document.getElementById('right-answer').style.display = "none";
         document.getElementById('wrong-answer').style.display = "none";
         document.getElementById('continue').style.display = "none";
+        document.getElementById('stemming-sentence').style.display = "none";
+        document.getElementById('new-types').innerHTML = "";
+        document.getElementById('new-types-box').style.display = "none";
+        document.getElementById('continue-submit').style.display = "none";
 
 }

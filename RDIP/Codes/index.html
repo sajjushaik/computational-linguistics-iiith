@@ -43,7 +43,7 @@
                                 </tr>
                         </table>
                         <br>
-                        <input type="submit" value="Submit" onclick="calculate_tokens_types() ; check_tokens_and_types()">
+                        <input type="submit" value="Submit" id="submit" onclick="calculate_tokens_types() ; check_tokens_and_types()">
                     </div>
 
                     <div id="answer-status">
@@ -52,8 +52,16 @@
                         <br>   
                         <p id="wrong-answer" style="display:none;">Wrong Answer</p> 
                         <br>
-                        <button id="continue" style="display:none;">Continue</button>   
-                    </div>           
+                        <button id="continue" style="display:none;" onclick="types_stemming()">Continue</button>   
+                    </div>   
+                    
+                    <div id="continue-functionality">
+                        <p id="stemming-sentence"></p>
+                        <p id="new-types"></p>
+                        <input type="text" id="new-types-box" size="5" style="display: none;">
+                        <br><br>
+                        <input type="submit" value="Submit" id="continue-submit" style="display: none;">
+                    </div>
                 </div>
             
             </div>
