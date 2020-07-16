@@ -105,7 +105,7 @@ input[type=text], #new-types-box{
     text-align: center;
 }
 
-#right-answer{
+#right-answer, #right-answer1{
     font-size: 20px;
     color: #008000;
     margin:5px;
@@ -117,7 +117,7 @@ input[type=text], #new-types-box{
     width: 60px;
 }
 
-#wrong-answer{
+#wrong-answer, #wrong-answer1{
     font-size: 20px;
     color: #FF0000;
     margin:5px;

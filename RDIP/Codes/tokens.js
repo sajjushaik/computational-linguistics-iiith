@@ -164,9 +164,13 @@ function check_stemmed_types(){
 
         if(document.getElementById('new-types-box').value == no_of_stemmed_types){
                 document.getElementById('new-types-box').style.backgroundColor = "#008000";
+                document.getElementById('right-answer1').style.display = "initial";
+                document.getElementById('wrong-answer1').style.display = "none";
         }
         else{
                 document.getElementById('new-types-box').style.backgroundColor = "#FF0000";
+                document.getElementById('right-answer1').style.display = "none";
+                document.getElementById('wrong-answer1').style.display = "initial";
         }
 
         document.getElementById('new-types-box').style.color = "#FFFFFF";
@@ -187,6 +191,8 @@ function set(){
         document.getElementById('submit').style.display = "flex";
         document.getElementById('right-answer').style.display = "none";
         document.getElementById('wrong-answer').style.display = "none";
+        document.getElementById('right-answer1').style.display = "none";
+        document.getElementById('wrong-answer1').style.display = "none";
         document.getElementById('continue').style.display = "none";
         document.getElementById('stemming-sentence').style.display = "none";
         document.getElementById('new-types').innerHTML = "";
@@ -205,6 +211,8 @@ function clear(){
         document.getElementById('new-types-box').style.backgroundColor = "#FFFFFF";
         document.getElementById('right-answer').style.display = "none";
         document.getElementById('wrong-answer').style.display = "none";
+        document.getElementById('right-answer1').style.display = "none";
+        document.getElementById('wrong-answer1').style.display = "none";
         document.getElementById('continue').style.display = "none";
         document.getElementById('stemming-sentence').style.display = "none";
         document.getElementById('new-types').innerHTML = "";
