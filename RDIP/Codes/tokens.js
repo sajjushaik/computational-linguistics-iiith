@@ -30,8 +30,6 @@ var corpus = "";
 var no_of_tokens = 0;
 var no_of_types = 0;
 var no_of_stemmed_types = 0;
-var stemmed_corpus = "";
-var words_array;
 
 function display_corpus(){
 
@@ -71,11 +69,9 @@ function display_table1(){
 function calculate_tokens_types(){
 
         var index = parseInt(corpus[corpus.length - 1]);
-        words_array = paragraphs[index - 1].split(/[\s,.?\"]+/);
+        var arr = paragraphs[index - 1].split(/[\s,.?\"]+/);
 
-        var arr = words_array;
-
-        for (var i = 0; i < arr.length; i++) {
+        for (var i = 0; i < arr.length-1; i++) {
                 arr[i] = arr[i].toLowerCase();
         }
 
@@ -142,17 +138,27 @@ function types_stemming(){
 
 function create_stemmed_corpus(){
 
-        stemmed_corpus = "";
-        var arr = words_array;
+        var stemmed_corpus = [];
+        
+        var index = parseInt(corpus[corpus.length - 1]);
+        var arr = paragraphs[index - 1].split(/[\s,.?\"]+/);
+
+        for (var i = 0; i < arr.length-1; i++) {
+                arr[i] = arr[i].toLowerCase();
+        }
+        
         for(var i=0; i<arr.length-1 ; i++){
                 stemmer.setCurrent(arr[i]);
                 stemmer.stem();
-                arr[i] = stemmer.getCurrent();
+                stemmed_corpus.push( stemmer.getCurrent() );
         }
 
-        arr = new Set(arr);
-        arr = Array.from(arr);
-        no_of_stemmed_types = arr.length;
+        stemmed_corpus = new Set(stemmed_corpus);
+        stemmed_corpus = Array.from(stemmed_corpus);
+        
+        no_of_stemmed_types = stemmed_corpus.length;        
+
+        // 78 64 91.
 
 }
 
