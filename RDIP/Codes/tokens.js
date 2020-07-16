@@ -1,5 +1,4 @@
 
-
 var paragraphs = ["A mouse was having a very bad time. She could find no food at all. She looked here and there, but there was no food, and she grew very thin." +
                         " At last the mouse found a basket, full of corn. There was a small hole in the basket, and she crept in. She could just get through the "+
                         "hole. Then she began to eat the corn. Being very hungry, she ate a great deal, and went on eating and eating. She had grown very fat "+
@@ -22,8 +21,11 @@ var paragraphs = ["A mouse was having a very bad time. She could find no food at
 
 
 var corpus = "";
+var no_of_tokens = 0;
+var no_of_types = 0;
 
 function display_corpus(){
+
         corpus = document.getElementById('corpus').options[document.getElementById('corpus').selectedIndex].text;
 
         if(corpus == "---Select a corpus---"){
@@ -44,20 +46,96 @@ function display_corpus(){
                 document.getElementById("experiment-corpus").innerHTML = paragraphs[2];
         }
 
-        document.getElementById('token').value = "";
-        document.getElementById('type').value = "";
+        set();
 
         display_table1();
         return true;
+
 }
 
 function display_table1(){
+
         document.getElementById("experiment-table-head").innerHTML = "Enter the number of tokens and types for the above corpus:";
         document.getElementById("experiment-table").style.display = "initial";
 }
 
+function calculate_tokens_types(){
+
+        var index = parseInt(corpus[corpus.length - 1]);
+        var arr = paragraphs[index - 1].split(/[\s,.?\"]+/);
+
+        for (var i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].toLowerCase();
+        }
+
+        no_of_tokens = arr.length - 1;
+
+        arr = new Set(arr);
+        arr = Array.from(arr);
+
+        no_of_types = arr.length - 1;
+
+}
+
+function check_tokens_and_types(){
+
+        var flag = 0 ;
+
+        if(document.getElementById('token').value == no_of_tokens){
+                document.getElementById('token').style.backgroundColor = "#008000";
+                flag += 1;
+        }
+        else{
+                document.getElementById('token').style.backgroundColor = "#FF0000";
+        }
+
+        if(document.getElementById('type').value == no_of_types){
+                document.getElementById('type').style.backgroundColor = "#008000";
+                flag += 1;
+        }
+        else{
+                document.getElementById('type').style.backgroundColor = "#FF0000";
+        }
+
+        if(flag == 2){
+                document.getElementById('right-answer').style.display = "initial";
+                document.getElementById('wrong-answer').style.display = "none";
+                document.getElementById('continue').style.display = "initial";
+        }
+        else{
+                document.getElementById('right-answer').style.display = "none";
+                document.getElementById('wrong-answer').style.display = "initial";
+                document.getElementById('continue').style.display = "none";
+        }
+
+        document.getElementById('token').style.color = "#FFFFFF";
+        document.getElementById('type').style.color = "#FFFFFF";
+
+}
+
+function set(){
+
+        document.getElementById('token').value = "";
+        document.getElementById('type').value = "";
+        document.getElementById('type').style.backgroundColor = "#FFFFFF";
+        document.getElementById('token').style.backgroundColor = "#FFFFFF";
+        document.getElementById('token').style.color = "#444444";
+        document.getElementById('type').style.color = "#444444";
+        document.getElementById('right-answer').style.display = "none";
+        document.getElementById('wrong-answer').style.display = "none";
+        document.getElementById('continue').style.display = "none";
+
+}
+
 function clear(){
+
         document.getElementById("experiment-corpus").innerHTML = "";
         document.getElementById("experiment-table-head").innerHTML = "";
         document.getElementById("experiment-table").style.display = "none";
+        document.getElementById('type').style.backgroundColor = "#FFFFFF";
+        document.getElementById('token').style.backgroundColor = "#FFFFFF";
+        document.getElementById('right-answer').style.display = "none";
+        document.getElementById('wrong-answer').style.display = "none";
+        document.getElementById('continue').style.display = "none";
+
 }

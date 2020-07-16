@@ -71,7 +71,7 @@ select{
     padding-top: 5px;
 }
 
-#experiment-table{
+#experiment-table, #answer-status{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -87,7 +87,7 @@ table,tr,td{
     padding:10px;
 }
 
-input[type=submit]{
+input[type=submit], #continue{
     margin:0 auto;
     display:flex;
     justify-content: center;
@@ -100,4 +100,17 @@ input[type=submit]{
 input[type=text]{
     color : #444444;
     height:20px;
+}
+
+#right-answer{
+    font-size: 20px;
+    color: #008000;
+    margin:5px;
+}
+
+#wrong-answer{
+    font-size: 20px;
+    color: #FF0000;
+    margin:5px;
+
 }
