@@ -20,6 +20,12 @@ var paragraphs = ["A mouse was having a very bad time. She could find no food at
                     
 
 
+
+var stemmer = new Snowball('English');
+// stemmer.setCurrent('abbreviations');
+// stemmer.stem();
+// alert(stemmer.getCurrent());
+
 var corpus = "";
 var no_of_tokens = 0;
 var no_of_types = 0;
