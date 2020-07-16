@@ -1,4 +1,4 @@
-alert("hello");
+
 var paragraphs = ["A mouse was having a very bad time. She could find no food at all. She looked here and there, but there was no food, and she grew very thin." +
                         " At last the mouse found a basket, full of corn. There was a small hole in the basket, and she crept in. She could just get through the "+
                         "hole. Then she began to eat the corn. Being very hungry, she ate a great deal, and went on eating and eating. She had grown very fat "+
@@ -17,4 +17,3 @@ var paragraphs = ["A mouse was having a very bad time. She could find no food at
                         " The master thought the donkey was mad, and he shouted, \"Help! Help!\" Men came running in with sticks, and they beat the donkey till it"+
                         " ran out of the house, and they drove it back to the field. \"I only did what the dog does,\" said the donkey,\" and yet they make a pet "+
                         "of the dog, and they beat me with sticks. It is not fair."];
-                    
