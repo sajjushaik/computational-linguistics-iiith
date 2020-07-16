@@ -19,12 +19,32 @@
                     Experiment
                 </div>
                 <div class="data">
-                    <select id="corpus">
+                    <select id="corpus" onchange="display_corpus()">
                         <option value="null">---Select a corpus---</option>
                         <option value="1">Corpus 1</option>
                         <option value="2">Corpus 2</option>
                         <option value="2">Corpus 3</option>
                     </select>
+                </div>
+
+                <div id="experiment-area">
+                    <p id="experiment-corpus"></p>
+                    <p id="experiment-table-head"></p>
+                    <div id="experiment-table" style="display: none;">
+                        <table>
+                                <tr>
+                                    <td>#tokens:</td>
+                                    <td><input type="text" id="token" size="5"></td>
+                                </tr>
+                                <tr>
+                                    <td>#types:</td>
+                                    <td><input type="text" id="type" size="5"></td>
+                                </tr>
+                        </table>
+                        <br>
+                        <input type="submit" value="Submit">
+                    </div>
+                    
                 </div>
             
             </div>

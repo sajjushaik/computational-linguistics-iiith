@@ -1,10 +1,11 @@
 
+
 var paragraphs = ["A mouse was having a very bad time. She could find no food at all. She looked here and there, but there was no food, and she grew very thin." +
                         " At last the mouse found a basket, full of corn. There was a small hole in the basket, and she crept in. She could just get through the "+
                         "hole. Then she began to eat the corn. Being very hungry, she ate a great deal, and went on eating and eating. She had grown very fat "+
                         "before she felt that she had had enough. When the mouse tried to climb out of the basket, she could not. She was too fat to pass through"+
                         " the hole. \"How shall I climb out?\" said the mouse. \"oh, how shall I climb out?\" Just then a rat came along, and he heard the mouse."+
-                        " \"Mouse,\" said the rat, \"if you want to climb out of the basket, you must wait till you have grown as thin as you were when you went in.",
+                        " \"Mouse,\" said the rat, \"if you want to climb out of the basket, you must wait till you have grown as thin as you were when you went in.\"",
                 "A wolf carried off a lamb. The lamb said, \" I know you are going to eat me, but before you eat me I would like to hear you play the flute. I"+
                         " have heard that you can play the flute better than anyone else, even the shepherd himself.\" The wolf was so pleased at this that he took"+
                         " out his flute and began to play. When he had done, the lamb insisted him to play once more and the wolf played again. The shepherd and "+
@@ -17,3 +18,46 @@ var paragraphs = ["A mouse was having a very bad time. She could find no food at
                         " The master thought the donkey was mad, and he shouted, \"Help! Help!\" Men came running in with sticks, and they beat the donkey till it"+
                         " ran out of the house, and they drove it back to the field. \"I only did what the dog does,\" said the donkey,\" and yet they make a pet "+
                         "of the dog, and they beat me with sticks. It is not fair."];
+                    
+
+
+var corpus = "";
+
+function display_corpus(){
+        corpus = document.getElementById('corpus').options[document.getElementById('corpus').selectedIndex].text;
+
+        if(corpus == "---Select a corpus---"){
+                alert("Select a corpus");
+                clear();
+                return false;
+        }
+
+        else if(corpus == "Corpus 1"){
+                document.getElementById("experiment-corpus").innerHTML = paragraphs[0];
+        }
+
+        else if(corpus == "Corpus 2"){
+                document.getElementById("experiment-corpus").innerHTML = paragraphs[1];
+        }
+
+        else if(corpus == "Corpus 3"){
+                document.getElementById("experiment-corpus").innerHTML = paragraphs[2];
+        }
+
+        document.getElementById('token').value = "";
+        document.getElementById('type').value = "";
+
+        display_table1();
+        return true;
+}
+
+function display_table1(){
+        document.getElementById("experiment-table-head").innerHTML = "Enter the number of tokens and types for the above corpus:";
+        document.getElementById("experiment-table").style.display = "initial";
+}
+
+function clear(){
+        document.getElementById("experiment-corpus").innerHTML = "";
+        document.getElementById("experiment-table-head").innerHTML = "";
+        document.getElementById("experiment-table").style.display = "none";
+}

@@ -1,5 +1,5 @@
 body{
-    font-family: "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Verdana,Arial,sans-serif;;
+    font-family: "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Verdana,Arial,sans-serif;
 }
 
 .container{
@@ -11,7 +11,7 @@ body{
 
 .display-sections{
     width: 100%;
-    min-height: 750px;
+    min-height: 700px;
     position: absolute;
     top: 0;
     left: 0;
@@ -52,4 +52,52 @@ select{
     text-align: left;
     zoom:120%;
     color:#444444;
+}
+
+.experiment-area{
+    text-align: center;
+}
+
+#experiment-corpus, #experiment-table-head{
+    color: #444444;
+    line-height: 24px;
+    padding-left:50px;
+    padding-right:50px;
+    text-align: justify;
+}
+
+#experiment-table-head{
+    text-align: center;
+    padding-top: 5px;
+}
+
+#experiment-table{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+table,tr,td{
+    margin-left: auto;
+    margin-right: auto;
+    color: #444444;
+    border:2px solid rgb(195, 195, 195);
+    border-collapse: collapse;
+    padding:10px;
+}
+
+input[type=submit]{
+    margin:0 auto;
+    display:flex;
+    justify-content: center;
+    padding:5px;
+    width: 70px;
+    height:30px;
+    text-align: center;
+}
+
+input[type=text]{
+    color : #444444;
+    height:20px;
 }
