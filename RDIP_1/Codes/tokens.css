@@ -1,0 +1,127 @@
+body{
+    font-family: "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Verdana,Arial,sans-serif;
+}
+
+.display-sections{
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 auto;
+    background: url(https://images.wallpaperscraft.com/image/letters_metallic_silver_131886_1920x1080.jpg);
+    background-color: rgb(48, 47, 47);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: left;
+}
+
+.section-experiment{
+    margin-top: 30px;
+    margin-left: 45px;
+    margin-right: 45px;
+    background-color: rgba(209, 209, 216,0.92);
+    min-height: 695px;
+    padding:20px;
+    /* margin:0 auto; */
+}
+
+.head1{
+    color: #222222;
+    font-weight: 800;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+.data{
+    font-size: 16px;
+    color: #313030;
+    padding:10px;
+    text-align: center;
+}
+
+select{
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+    text-align: left;
+    zoom:150%;
+    color:#141313;
+}
+
+.experiment-area{
+    text-align: center;
+}
+
+#experiment-corpus, #experiment-table-head{
+    color: #141313;
+    line-height: 24px;
+    padding-left:50px;
+    padding-right:50px;
+    text-align: justify;
+}
+
+#experiment-table-head{
+    text-align: center;
+    padding-top: 5px;
+}
+
+#experiment-table, #answer-status,
+#continue-functionality{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+table,tr,td{
+    margin-left: auto;
+    margin-right: auto;
+    color: #141313;
+    border:2px solid rgb(83, 82, 82);
+    border-collapse: collapse;
+    padding:10px;
+}
+
+input[type=submit], #continue,
+#new-types-box, #continue-submit{
+    margin:0 auto;
+    display:flex;
+    justify-content: center;
+    padding:5px;
+    width: 70px;
+    height:30px;
+    text-align: center;
+}
+
+input[type=text], #new-types-box{
+    color : #141313;
+    height:20px;
+    text-align: center;
+}
+
+#right-answer, #right-answer1{
+    font-size: 20px;
+    color: #008000;
+    margin:5px;
+}
+
+
+#new-types-box{
+    height:15px;
+    width: 60px;
+}
+
+#wrong-answer, #wrong-answer1{
+    font-size: 20px;
+    color: #FF0000;
+    margin:5px;
+
+}
+
+button:hover, input[type=submit]:hover{
+    cursor: pointer;
+    border: 2px solid black;
+}

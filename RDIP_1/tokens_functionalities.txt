@@ -1,0 +1,9 @@
+The functionalities required are:
+
+    1. The dropdown list to select a corpus.
+
+    2. Functionality for displaying the corresponding corpus and related bocx to take input from user.
+
+    3. Functionality to check whether the entered number matches with the number of token and types.
+
+    4. Using stemming, find the types of words with same root words.

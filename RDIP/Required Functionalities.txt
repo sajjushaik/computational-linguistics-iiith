@@ -1,0 +1,21 @@
+
+The functionalities required to run the experiment are:
+
+    1. Based on the selection of language from the created drop-down list, we have to display the buttons of words of a sentence in a shuffled way.
+
+    2. Each time a button is clicked, we have to display the corresponding words typed in the sequence.
+
+    3. When the user starts opting out the words, a button must be displayed which can return to step 1 whenever the user wants to re-form the sentence. This involves 
+    erasing the sentence and again display the words in random order.
+
+    4. After using up all the words, display the button to check whether the sentence is correct or not. If correct, Display 'Right Answer', otherwise display 
+    'Wrong Answer' and display the button to show the correct answers that are possible out of the given words.
+
+    5. A function to generate a random sentence from the available sentences.
+
+
+Extra functionalities that could be added are:
+
+    1. A button to move to the next question can be added instead of refreshing the page to get a new one.
+
+    2. Instead of showing the correct answer after a wrong attempt, only a hint could be given.

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+
+        <title>Virtual Labs</title>
+        <link rel="shortcut icon" href="../../src/themes/maroon-grid/images/logo.jpg">
+        
+        <script src="../Libraries/require.js"></script>
+        <script src="../Libraries/node_modules/snowball/stemmer/lib/Snowball.min.js"></script>
+
+        <script src="tokens.js"></script>
+        <link rel="stylesheet" href="tokens.css">
+
+    </head>
+    <body>
+        
+        <div class="display-sections">
+
+            <div class="section-experiment">
+                <div class="head1">
+                    Experiment
+                </div>
+                <div class="data">
+                    <select id="corpus" onchange="display_corpus()">
+                        <option value="null">---Select a corpus---</option>
+                        <option value="1">Corpus 1</option>
+                        <option value="2">Corpus 2</option>
+                        <option value="2">Corpus 3</option>
+                    </select>
+                </div>
+
+                <div id="experiment-area">
+                    <p id="experiment-corpus"></p>
+                    <p id="experiment-table-head" style="font-weight: 700;"></p>
+
+                    <div id="experiment-table" style="display: none;">
+                        <table>
+                                <tr>
+                                    <td>#tokens:</td>
+                                    <td><input type="text" id="token" size="5"></td>
+                                </tr>
+                                <tr>
+                                    <td>#types:</td>
+                                    <td><input type="text" id="type" size="5"></td>
+                                </tr>
+                        </table>
+                        <br>
+                        <input type="submit" value="Submit" id="submit" onclick="calculate_tokens_types() ; check_tokens_and_types()">
+                    </div>
+
+                    <div id="answer-status">
+                        <br>
+                        <p id="right-answer" style="display:none;">Right Answer</p> 
+                        <br>   
+                        <p id="wrong-answer" style="display:none;">Wrong Answer</p> 
+                        <br>
+                        <button id="continue" style="display:none;" onclick="types_stemming()">Continue</button>   
+                    </div>   
+                    
+                    <div id="continue-functionality">
+                        <p id="stemming-sentence"></p>
+                        <p id="new-types"></p>
+                        <input type="text" id="new-types-box" size="5" style="display: none;">
+                        <br><br>
+                        <input type="submit" value="Submit" id="continue-submit" style="display: none;" onclick="check_stemmed_types()">
+                        <br><br>
+                        <p id="right-answer1" style="display:none;">Right Answer</p>  
+                        <p id="wrong-answer1" style="display:none;">Wrong Answer</p> 
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
