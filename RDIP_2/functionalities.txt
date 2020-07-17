@@ -1,0 +1,11 @@
+The functionalities required are:
+
+    1. Dropdown for selection of language.
+
+    2. Dropdown for selection of a sentence.
+
+    3. Displaying the table containing the words and dropdowns for selection of corresponding parts of speech.
+
+    4. After selection of parts of speech, after submitting, show whethe the selected option is correct or not.
+
+    5. Displaying a button at the end to get the correct answers.
