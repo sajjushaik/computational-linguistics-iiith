@@ -1,0 +1,62 @@
+body{
+    font-family: "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Verdana,Arial,sans-serif;
+}
+
+.display-sections{
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 auto;
+    background: url(https://www.chapter2blog.com/wp-content/uploads/2019/04/bigstock-Close-Up-Of-Old-English-Dictio-155344643-1-1024x683.jpg);
+    background-color: rgb(48, 47, 47);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: left;
+    /* Background */
+}
+
+.section-experiment{
+    margin-top: 30px;
+    margin-left: 45px;
+    margin-right: 45px;
+    background-color: rgba(209, 209, 216,0.92);
+    min-height: 695px;
+    padding:20px;
+    /* margin:0 auto; */
+}
+
+.head1{
+    color: #222222;
+    font-weight: 800;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+.data{
+    font-size: 16px;
+    color: #313030;
+    padding:10px;
+    text-align: center;
+}
+
+#language{
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+    text-align: left;
+    zoom:150%;
+    color:#141313;
+}
+
+#english, #hindi{
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+    text-align: left;
+    zoom:130%;
+    color:#141313;
+}

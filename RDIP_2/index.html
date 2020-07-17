@@ -12,5 +12,40 @@
 
     <body>
 
+        <div class="display-sections">
+
+            <div class="section-experiment">
+                <div class="head1">
+                    Experiment
+                </div>
+                <div class="data" style="text-align: center;">
+                    <select id="language" onchange="display_sentences_dropdown()">
+                        <option value="null">---Select Language---</option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                    </select>
+                </div>
+                <div class="data">
+                    <select id="english" style="display: none;">
+                        <option value="null1">---Select a sentence---</option>
+                        <option value="a">The child liked the chocolate.</option>
+                        <option value="b">She was stopped by the bravest knight.</option>
+                        <option value="c">Mary baked a cake for his birthday</option>
+                        <option value="d">She decorated the cake carefully</option>
+                        <option value="e">Mary wore a dress with polka dots.</option>
+                    </select>
+                    <select id="hindi" style="display: none;">
+                        <option value="null2">---Select a sentence---</option>
+                        <option value="a">राम ने सीता के लिए फल तोड़ा।</option>
+                        <option value="b">छोटे बच्चे पाठशाला जल्दी आयेंगे।</option>
+                        <option value="c">मेहनत का फल मीठा होता है।</option>
+                        <option value="d">वाह! वह खूबसूरत है।</option>
+                        <option value="e">पेड़ से पत्ते गिर गए।</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
     </body>
 </html>
