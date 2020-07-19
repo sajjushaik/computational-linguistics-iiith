@@ -79,3 +79,7 @@ th,td{
 #POS-table{
     border-spacing: 0px;
 }
+
+button{
+    cursor: pointer;
+}

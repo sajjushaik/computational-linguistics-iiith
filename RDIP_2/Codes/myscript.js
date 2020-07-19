@@ -1,8 +1,9 @@
 /* Corpus */
 
+
 var sentence = '{"English":['+
                     '{"a":"The child liked the chocolate.", "b":"She was stopped by the bravest knight.", "c":"Mary baked a cake for his birthday.",' + 
-                        '"d":"She decorated the cake carefully.", "5":"Mary wore a dress with polka dots."}],' +
+                        '"d":"She decorated the cake carefully.", "e":"Mary wore a dress with polka dots."}],' +
 
                 '"Hindi":[' +
                     '{"a":"राम ने सीता के लिए फल तोड़ा।", "b":"छोटे बच्चे पाठशाला जल्दी आयेंगे।", "c":"मेहनत का फल मीठा होता है।", "d":"वाह! वह खूबसूरत है।",' +
@@ -65,6 +66,7 @@ function currentSentence(){
     document.getElementById('POS-table').innerHTML = "";
     document.getElementById('first-message').style.display = "initial";
     document.getElementById('POS-table').style.display = "initial";
+    document.getElementById('submit').style.display = "initial";
 
     display_table();
 
@@ -103,9 +105,35 @@ function create_columns(mytable){
 
         var cell = row.insertCell();
         cell.appendChild(document.createTextNode(i));
-        
-        cell = row.insertCell();
-        cell.appendChild(document.createTextNode(""));
+
+        if( language == "English" ){
+            cell = row.insertCell();
+            var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Preposition","Conjunction","Interjection"]
+            var select = document.createElement("select");
+            select.id="POS";
+
+            for(var i of options){
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                select.appendChild(option);
+            }
+            cell.appendChild(select);
+        }
+        else if( language == "Hindi" ){
+            cell = row.insertCell();
+            var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Postposition","Conjunction","Interjection"]
+            var select = document.createElement("select");
+            select.id="POS";
+
+            for(var i of options){
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                select.appendChild(option);
+            }
+            cell.appendChild(select);
+        }
         
         cell = row.insertCell();
         cell.appendChild(document.createTextNode(""));
@@ -124,6 +152,7 @@ function clear(){
     document.getElementById('first-message').style.display = "initial";
     document.getElementById('POS-table').innerHTML = "";
     document.getElementById('POS-table').style.display = "none";
+    document.getElementById('submit').style.display = "none";
     document.getElementById('first-message').style.display = "none";
 
 }
@@ -133,6 +162,7 @@ function set(){
     document.getElementById('first-message').style.display = "none";
     document.getElementById('POS-table').innerHTML = "";
     document.getElementById('POS-table').style.display = "none";
+    document.getElementById('submit').style.display = "none";
     document.getElementById("english").selectedIndex = "0";
     document.getElementById("hindi").selectedIndex = "0";
 }
