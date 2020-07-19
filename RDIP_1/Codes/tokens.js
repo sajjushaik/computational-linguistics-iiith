@@ -230,5 +230,6 @@ function clear(){
         document.getElementById('new-types').innerHTML = "";
         document.getElementById('new-types-box').style.display = "none";
         document.getElementById('continue-submit').style.display = "none";
+        // Complete
 
 }
