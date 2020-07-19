@@ -1,5 +1,3 @@
-/* Corpus */
-
 
 var sentence = '{"English":['+
                     '{"a":"The child liked the chocolate.", "b":"She was stopped by the bravest knight.", "c":"Mary baked a cake for his birthday.",' + 
@@ -106,7 +104,7 @@ function create_columns(mytable){
         var cell = row.insertCell();
         cell.appendChild(document.createTextNode(i));
 
-        if( language == "English" ){
+        if( language == "English" ){                                          // Noun is the first option. Hence it is the default option.
             cell = row.insertCell();
             var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Preposition","Conjunction","Interjection"]
             var select = document.createElement("select");
@@ -120,7 +118,7 @@ function create_columns(mytable){
             }
             cell.appendChild(select);
         }
-        else if( language == "Hindi" ){
+        else if( language == "Hindi" ){                                      // Noun is the first option. Hence it is the default option.
             cell = row.insertCell();
             var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Postposition","Conjunction","Interjection"]
             var select = document.createElement("select");

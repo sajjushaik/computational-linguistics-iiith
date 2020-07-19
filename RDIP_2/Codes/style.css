@@ -80,6 +80,18 @@ th,td{
     border-spacing: 0px;
 }
 
+#POS{
+    zoom:1.1;
+}
+
 button{
     cursor: pointer;
+}
+
+#submit{
+    padding:5px;
+}
+
+#submit:hover{
+    border: 1.5px solid black;
 }
