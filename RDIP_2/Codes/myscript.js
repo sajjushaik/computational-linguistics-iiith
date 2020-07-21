@@ -78,6 +78,7 @@ function currentSentence(){
             alert("Select a Sentence");
             return false;
         }
+        document.getElementById('getanswer').style.display = "none";
         current_sentence = English[parseInt(document.getElementById('english').options[document.getElementById('english').selectedIndex].value)];
 
     }
@@ -88,6 +89,7 @@ function currentSentence(){
             alert("Select a Sentence");
             return false;
         }
+        document.getElementById('getanswer').style.display = "none";
         current_sentence = Hindi[parseInt(document.getElementById('hindi').options[document.getElementById('hindi').selectedIndex].value)];
     }
 
@@ -176,6 +178,8 @@ function create_columns(mytable){
 }
 
 function check_answer(){
+
+    var flag=0;
     
     if(language == "English"){
         
@@ -204,8 +208,16 @@ function check_answer(){
                 img.style.height = "20px";
                 img.style.width = "20px";
                 col[2].appendChild(img);
+                flag=1;
             }
             j+=1
+        }
+
+        if(flag==1){
+            document.getElementById('getanswer').style.display = "initial";
+        }
+        else{
+            document.getElementById('getanswer').style.display = "none";
         }
        
     }
@@ -265,8 +277,16 @@ function check_answer(){
                 img.style.height = "20px";
                 img.style.width = "20px";
                 col[2].appendChild(img);
+                flag=1;
             }
             j+=1
+        }
+
+        if(flag==1){
+            document.getElementById('getanswer').style.display = "initial";
+        }
+        else{
+            document.getElementById('getanswer').style.display = "none";
         }
 
     }
@@ -281,6 +301,7 @@ function clear(){
     document.getElementById('POS-table').innerHTML = "";
     document.getElementById('POS-table').style.display = "none";
     document.getElementById('submit').style.display = "none";
+    document.getElementById('getanswer').style.display = "none";
     document.getElementById('first-message').style.display = "none";
 
 }
@@ -291,6 +312,7 @@ function set(){
     document.getElementById('POS-table').innerHTML = "";
     document.getElementById('POS-table').style.display = "none";
     document.getElementById('submit').style.display = "none";
+    document.getElementById('getanswer').style.display = "none";
     document.getElementById("english").selectedIndex = "0";
     document.getElementById("hindi").selectedIndex = "0";
 }

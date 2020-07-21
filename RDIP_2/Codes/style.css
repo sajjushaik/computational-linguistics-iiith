@@ -88,10 +88,10 @@ button{
     cursor: pointer;
 }
 
-#submit{
+#submit, #getanswer{
     padding:5px;
 }
 
-#submit:hover{
+#submit:hover, #getanswer:hover{
     border: 1.5px solid black;
 }
