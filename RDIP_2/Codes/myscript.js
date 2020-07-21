@@ -1,30 +1,48 @@
 /* Corpus */
 
-var sentence = '{"English":['+
-                    '{"a":"The child liked the chocolate.", "b":"She was stopped by the bravest knight.", "c":"Mary baked a cake for his birthday.",' + 
-                        '"d":"She decorated the cake carefully.", "e":"Mary wore a dress with polka dots."}],' +
+var English = ["The child liked the chocolate.","She was stopped by the bravest knight.","Mary baked a cake for his birthday.","She decorated the cake carefully.","Mary wore a dress with polka dots."];
 
-                '"Hindi":[' +
-                    '{"a":"राम ने सीता के लिए फल तोड़ा।", "b":"छोटे बच्चे पाठशाला जल्दी आयेंगे।", "c":"मेहनत का फल मीठा होता है।", "d":"वाह! वह खूबसूरत है।",' +
-                        '"e":"पेड़ से पत्ते गिर गए।"}]}';
-
-/*
-    var obj = JSON.parse(sentence);
-    alert(obj.English[0].a);
-*/
+var Hindi = ["राम ने सीता के लिए फल तोड़ा।","छोटे बच्चे पाठशाला जल्दी आयेंगे।","मेहनत का फल मीठा होता है।","वाह! वह खूबसूरत है।","पेड़ से पत्ते गिर गए।"];
 
 var pos = require('pos');
-var words = new pos.Lexer().lex('How are you? I am good.'); 
-var tagger = new pos.Tagger();
-var taggedWords = tagger.tag(words);
-for (i in taggedWords) {
-    var taggedWord = taggedWords[i];
-    var word = taggedWord[0];
-    var tag = taggedWord[1];
-    console.log(word + " /" + tag);
-}   
 
-var sentences = JSON.parse(sentence);
+for(var j of English){
+    var words = new pos.Lexer().lex(j.substr(0,j.length-1)); 
+    var tagger = new pos.Tagger();
+    var taggedWords = tagger.tag(words);
+    var tags = "";
+    for (i in taggedWords) {
+        var taggedWord = taggedWords[i];
+        var tag = taggedWord[1];
+
+        if(tag=="NN" || tag=="NNP" || tag=="NNS"){
+            tag="Noun";
+        }
+        else if(tag=="VBN" || tag=="VBD"){
+            tag="Verb";
+        }
+        else if(tag=="JJ" || tag=="JJS"){
+            tag="Adjective";
+        }
+        else if(tag=="PRP" || tag=="PRP$"){
+            tag="Pronoun";
+        }
+        else if(tag=="IN"){
+            tag="Preposition";
+        }
+        else if(tag=="RB"){
+            tag="Adverb";
+        }
+        else if(tag=="DT"){
+            tag="Determiner";
+        }
+        tags+=String(tag) + " ";
+    } 
+    EnglishTags.push(tags);
+}
+// alert(EnglishTags[1]);
+
+// var sentences = JSON.parse(sentence);
 var language = "";
 var current_sentence = "";
 
@@ -60,7 +78,7 @@ function currentSentence(){
             alert("Select a Sentence");
             return false;
         }
-        current_sentence = sentences.English[0][document.getElementById('english').options[document.getElementById('english').selectedIndex].value];
+        current_sentence = English[parseInt(document.getElementById('english').options[document.getElementById('english').selectedIndex].value)];
 
     }
     else if(language == "Hindi"){
@@ -70,7 +88,7 @@ function currentSentence(){
             alert("Select a Sentence");
             return false;
         }
-        current_sentence = sentences.Hindi[0][document.getElementById('hindi').options[document.getElementById('hindi').selectedIndex].value];
+        current_sentence = Hindi[parseInt(document.getElementById('hindi').options[document.getElementById('hindi').selectedIndex].value)];
     }
 
     document.getElementById('POS-table').innerHTML = "";
@@ -108,7 +126,7 @@ function create_columns(mytable){
     current_sentence = current_sentence.substr(0,current_sentence.length-1);
     
     var arr = current_sentence.split(/[\s!]+/);
-
+    var j = 0;
     for(var i of arr){
 
         var row = mytable.insertRow();
@@ -120,7 +138,8 @@ function create_columns(mytable){
             cell = row.insertCell();
             var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Preposition","Conjunction","Interjection"]
             var select = document.createElement("select");
-            select.id="POS";
+            select.id="POS" + String(j);
+            j+=1;
 
             for(var i of options){
                 var option = document.createElement("option");
@@ -134,7 +153,8 @@ function create_columns(mytable){
             cell = row.insertCell();
             var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Postposition","Conjunction","Interjection"]
             var select = document.createElement("select");
-            select.id="POS";
+            select.id="POS" + String(j);
+            j+=1;
 
             for(var i of options){
                 var option = document.createElement("option");
@@ -150,6 +170,104 @@ function create_columns(mytable){
 
         cell = row.insertCell();
         cell.appendChild(document.createTextNode(""));
+
+    }
+
+}
+
+function check_answer(){
+    
+    if(language == "English"){
+        
+        var index = parseInt(document.getElementById('english').options[document.getElementById('english').selectedIndex].value);
+        var tags = EnglishTags[index].split(/[\s]+/);
+        var mytablerows = document.getElementById('POS-table').rows;
+        var j = 0;
+        for(var i=1;i<mytablerows.length;i++){
+            var col = mytablerows[i].cells;
+            var chosen = document.getElementById('POS' + String(j)).options[document.getElementById('POS' + String(j)).selectedIndex].value;
+
+            col[2].innerHTML = "";
+
+            if(chosen == tags[j]){
+                img = document.createElement("img");
+                img.src = 'right.png';
+                img.id=String(j);
+                img.style.height = "20px";
+                img.style.width = "20px";
+                col[2].appendChild(img);
+            }
+            else{
+                img = document.createElement("img");
+                img.src = 'wrong.png';
+                img.id=String(j);
+                img.style.height = "20px";
+                img.style.width = "20px";
+                col[2].appendChild(img);
+            }
+            j+=1
+        }
+       
+    }
+
+    else if(language == "Hindi"){
+
+        // var index = parseInt(document.getElementById('english').options[document.getElementById('english').selectedIndex].value);
+        // "राम ने सीता के लिए फल तोड़ा।","छोटे बच्चे पाठशाला जल्दी आयेंगे।","मेहनत का फल मीठा होता है।","वाह! वह खूबसूरत है।","पेड़ से पत्ते गिर गए।"];
+        
+        var arr = current_sentence.split(/[\s]+/);
+        
+        var tags = [];
+        for(var word of arr){
+            if(word=="राम" || word=="सीता" || word=="फल" || word=="बच्चे" || word=="पाठशाला" || word=="मेहनत" || word=="पेड़" || word=="पत्ते"){
+                tags.push("Noun");
+            }
+            else if(word=="ने" || word=="के" || word=="लिए" || word=="का" || word=="से"){
+                tags.push("Postposition");
+            }
+            else if(word=="तोड़ा" || word=="आयेंगे" || word=="होता" || word=="है" || word=="गिर" || word=="गए"){
+                tags.push("Verb");
+            }
+            else if(word=="छोटे" || word=="मीठा" || word=="खूबसूरत"){
+                tags.push("Adjective");
+            }
+            else if(word=="जल्दी"){
+                tags.push("Adverb");
+            }
+            else if(word=="वाह!"){
+                tags.push("Interjection");
+            }
+            else if(word=="वह"){
+                tags.push("Pronoun");
+            }
+        }
+
+        var mytablerows = document.getElementById('POS-table').rows;
+        var j = 0;
+        for(var i=1;i<mytablerows.length;i++){
+            var col = mytablerows[i].cells;
+            var chosen = document.getElementById('POS' + String(j)).options[document.getElementById('POS' + String(j)).selectedIndex].value;
+
+            col[2].innerHTML = "";
+
+            if(chosen == tags[j]){
+                img = document.createElement("img");
+                img.src = 'right.png';
+                img.id=String(j);
+                img.style.height = "20px";
+                img.style.width = "20px";
+                col[2].appendChild(img);
+            }
+            else{
+                img = document.createElement("img");
+                img.src = 'wrong.png';
+                img.id=String(j);
+                img.style.height = "20px";
+                img.style.width = "20px";
+                col[2].appendChild(img);
+            }
+            j+=1
+        }
 
     }
 
