@@ -79,6 +79,7 @@ function currentSentence(){
             alert("Select a Sentence");
             return false;
         }
+        document.getElementById('getanswer').innerHTML ='Get Answer';
         document.getElementById('getanswer').style.display = "none";
         current_sentence = English[parseInt(document.getElementById('english').options[document.getElementById('english').selectedIndex].value)];
 
@@ -90,6 +91,7 @@ function currentSentence(){
             alert("Select a Sentence");
             return false;
         }
+        document.getElementById('getanswer').innerHTML ='Get Answer';
         document.getElementById('getanswer').style.display = "none";
         current_sentence = Hindi[parseInt(document.getElementById('hindi').options[document.getElementById('hindi').selectedIndex].value)];
     }
@@ -294,6 +296,90 @@ function check_answer(){
 
 }
 
+function get_answers(){
+
+    if(document.getElementById('getanswer').innerHTML == 'Get Answer'){
+
+        document.getElementById('getanswer').innerHTML = 'Hide Answer';
+
+        if(language == "English"){
+            var index = parseInt(document.getElementById('english').options[document.getElementById('english').selectedIndex].value);
+            var tags = EnglishTags[index].split(/[\s]+/);
+
+            var mytablerows = document.getElementById('POS-table').rows;
+            var j = 0;
+            for(var i=1;i<mytablerows.length;i++){
+                var col = mytablerows[i].cells;
+
+                col[3].innerHTML = "";
+
+                text = document.createTextNode(tags[j]);
+                text.id = String(j+10);
+                col[3].appendChild(text);
+
+                j+=1
+            }
+        }
+        else if(language == "Hindi"){
+
+            var arr = current_sentence.split(/[\s]+/);
+            var mytablerows = document.getElementById('POS-table').rows;
+            var j = 0;
+            for(var i=1;i<mytablerows.length;i++){
+
+                var col = mytablerows[i].cells;
+
+                col[3].innerHTML = "";
+
+                var tag = "";
+                word = arr[j];
+
+                if(word=="राम" || word=="सीता" || word=="फल" || word=="बच्चे" || word=="पाठशाला" || word=="मेहनत" || word=="पेड़" || word=="पत्ते"){
+                    tag="Noun";
+                }
+                else if(word=="ने" || word=="के" || word=="लिए" || word=="का" || word=="से"){
+                    tag="Postposition";
+                }
+                else if(word=="तोड़ा" || word=="आयेंगे" || word=="होता" || word=="है" || word=="गिर" || word=="गए"){
+                    tag="Verb";
+                }
+                else if(word=="छोटे" || word=="मीठा" || word=="खूबसूरत"){
+                    tag="Adjective";
+                }
+                else if(word=="जल्दी"){
+                    tag="Adverb";
+                }
+                else if(word=="वाह!"){
+                    tag="Interjection";
+                }
+                else if(word=="वह"){
+                    tag="Pronoun";
+                }
+
+                text = document.createTextNode(tag);
+                text.id = String(j+10);
+                col[3].appendChild(text);
+
+                j+=1
+            }
+        }
+
+    }
+
+    else if(document.getElementById('getanswer').innerHTML == 'Hide Answer'){
+
+        document.getElementById('getanswer').innerHTML ='Get Answer';
+        var mytablerows = document.getElementById('POS-table').rows;
+            for(var i=1;i<mytablerows.length;i++){
+                var col = mytablerows[i].cells;
+
+                col[3].innerHTML = "";
+            }
+
+    }
+
+}
+
 function clear(){
 
     document.getElementById('english').style.display = "none";
@@ -304,6 +390,7 @@ function clear(){
     document.getElementById('submit').style.display = "none";
     document.getElementById('getanswer').style.display = "none";
     document.getElementById('first-message').style.display = "none";
+    document.getElementById('getanswer').innerHTML ='Get Answer';
 
 }
 
@@ -316,6 +403,8 @@ function set(){
     document.getElementById('getanswer').style.display = "none";
     document.getElementById("english").selectedIndex = "0";
     document.getElementById("hindi").selectedIndex = "0";
+    document.getElementById('getanswer').innerHTML ='Get Answer';
+
 }
 },{"pos":4}],2:[function(require,module,exports){
 /*
