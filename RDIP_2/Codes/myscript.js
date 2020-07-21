@@ -1,3 +1,4 @@
+/* Corpus */
 
 var sentence = '{"English":['+
                     '{"a":"The child liked the chocolate.", "b":"She was stopped by the bravest knight.", "c":"Mary baked a cake for his birthday.",' + 
@@ -11,6 +12,17 @@ var sentence = '{"English":['+
     var obj = JSON.parse(sentence);
     alert(obj.English[0].a);
 */
+
+var pos = require('pos');
+var words = new pos.Lexer().lex('How are you? I am good.'); 
+var tagger = new pos.Tagger();
+var taggedWords = tagger.tag(words);
+for (i in taggedWords) {
+    var taggedWord = taggedWords[i];
+    var word = taggedWord[0];
+    var tag = taggedWord[1];
+    console.log(word + " /" + tag);
+}   
 
 var sentences = JSON.parse(sentence);
 var language = "";
