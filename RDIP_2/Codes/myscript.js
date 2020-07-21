@@ -4,14 +4,14 @@ var English = ["The child liked the chocolate.","She was stopped by the bravest 
 
 var Hindi = ["राम ने सीता के लिए फल तोड़ा।","छोटे बच्चे पाठशाला जल्दी आयेंगे।","मेहनत का फल मीठा होता है।","वाह! वह खूबसूरत है।","पेड़ से पत्ते गिर गए।"];
 
-var pos = require('pos');
+var pos = require('pos');                                            // POSTagger.
 
 for(var j of English){
     var words = new pos.Lexer().lex(j.substr(0,j.length-1)); 
     var tagger = new pos.Tagger();
     var taggedWords = tagger.tag(words);
-    var tags = "";
-    for (i in taggedWords) {
+    var tags = "";                    
+    for (i in taggedWords) {                                         // Tags of english sentences.
         var taggedWord = taggedWords[i];
         var tag = taggedWord[1];
 
@@ -48,7 +48,7 @@ var current_sentence = "";
 
 function display_sentences_dropdown(){
 
-    language = document.getElementById('language').options[document.getElementById('language').selectedIndex].text;
+    language = document.getElementById('language').options[document.getElementById('language').selectedIndex].text;    // Displaying sentences dropdown based on languages.
 
     if(language == "---Select Language---"){
         clear();
@@ -69,11 +69,11 @@ function display_sentences_dropdown(){
 
 }
 
-function currentSentence(){
+function currentSentence(){                                                                  // Actions based on the sentence selected.
 
     if(language == "English"){
 
-        if(document.getElementById('english').options[document.getElementById('english').selectedIndex].value == "null1"){
+        if(document.getElementById('english').options[document.getElementById('english').selectedIndex].value == "null1"){     
             set();
             alert("Select a Sentence");
             return false;
@@ -106,7 +106,7 @@ function currentSentence(){
 
 }
 
-function display_table(){
+function display_table(){                                                                   // Displaying table for the selected sentence.
 
     var mytable = document.querySelector('#POS-table');
 
@@ -125,7 +125,7 @@ function display_table(){
 
 }
 
-function create_columns(mytable){
+function create_columns(mytable){                                                 // Creating columns of the table to be displayed.
 
     current_sentence = current_sentence.substr(0,current_sentence.length-1);
     
@@ -179,7 +179,7 @@ function create_columns(mytable){
 
 }
 
-function check_answer(){
+function check_answer(){                                                          // Checking the answers when the submit button is clicked.
 
     var flag=0;
     
@@ -295,7 +295,7 @@ function check_answer(){
 
 }
 
-function get_answers(){
+function get_answers(){                                                         // Getting the correct answers if even any one of them is wrong.
 
     if(document.getElementById('getanswer').innerHTML == 'Get Answer'){
 
@@ -365,7 +365,7 @@ function get_answers(){
 
     }
 
-    else if(document.getElementById('getanswer').innerHTML == 'Hide Answer'){
+    else if(document.getElementById('getanswer').innerHTML == 'Hide Answer'){         // Hiding the correct answers when 'Hide Answer' button is clicked.
 
         document.getElementById('getanswer').innerHTML ='Get Answer';
         var mytablerows = document.getElementById('POS-table').rows;
