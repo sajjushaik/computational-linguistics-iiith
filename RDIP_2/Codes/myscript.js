@@ -137,12 +137,14 @@ function create_columns(mytable){                                               
 
         var cell = row.insertCell();
         cell.appendChild(document.createTextNode(i));
+        cell.className = "words";
 
         if( language == "English" ){                                          // Noun is the first option. Hence it is the default option.
             cell = row.insertCell();
             var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Preposition","Conjunction","Interjection"]
             var select = document.createElement("select");
             select.id="POS" + String(j);
+            select.className = "selection";
             j+=1;
 
             for(var i of options){
@@ -158,6 +160,7 @@ function create_columns(mytable){                                               
             var options = ["Noun","Pronoun","Verb","Adjective","Adverb","Determiner","Postposition","Conjunction","Interjection"]
             var select = document.createElement("select");
             select.id="POS" + String(j);
+            select.className = "selection";
             j+=1;
 
             for(var i of options){
